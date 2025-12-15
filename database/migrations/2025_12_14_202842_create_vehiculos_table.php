@@ -15,6 +15,7 @@ return new class extends Migration
             $table->string('tipo', 20);
             $table->string('propietario',100)->nullable();
             $table->text('observaciones')->nullable();
+            $table->string('estado')->default('Parqueado')->nullable(false)->change();
             $table->timestamps();
         });
     }

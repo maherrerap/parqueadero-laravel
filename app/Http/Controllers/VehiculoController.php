@@ -22,11 +22,12 @@ class VehiculoController extends Controller
 
     public function store(Request $request)
     {
-        $request -> validate([
+        $data = $request -> validate([
             'placa' => 'required|max:10',
             'tipo' => 'required',
         ]);
-        Vehiculo::createVehiculo($request->all());
+        $data['estado'] = 'Parqueado';
+        Vehiculo::createVehiculo($data);
         return redirect()->route('vehiculos.index')
             ->with('success', 'Vehiculo Registrado.');
     }
@@ -66,9 +67,9 @@ class VehiculoController extends Controller
      */
     public function destroy(Vehiculo $vehiculo)
     {
-        Vehiculo::deleteVehiculo($vehiculo);
+        $vehiculo->update(['estado' => 'Salio',]);
 
         return redirect() -> route('vehiculos.index')
-            ->with('success', 'Vehiculo Eliminado.');
+            ->with('success', 'Vehiculo Salió del Parqueadero.');
     }
 }

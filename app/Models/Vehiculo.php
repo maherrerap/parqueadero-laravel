@@ -11,11 +11,13 @@ class Vehiculo extends Model
         'placa',
         'tipo',
         'propietario',
-        'observaciones'
+        'observaciones',
+        'estado'
     ];
+    protected $attributes = [ 'estado' => 'Parqueado' ];
 
     static public function getVehiculos() {
-        return self::all();
+        return Vehiculo::where('estado', 'Parqueado')->get();
     }
 
     static public function getVehiculosById($id) {
@@ -27,7 +29,5 @@ class Vehiculo extends Model
     static public function updateVehiculo(Vehiculo $vehiculo, array $data) {
         return $vehiculo->update($data);
     }
-    static public function deleteVehiculo(Vehiculo $vehiculo) {
-        $vehiculo->delete();
-    }
+
 }
