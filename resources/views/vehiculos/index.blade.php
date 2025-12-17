@@ -13,6 +13,7 @@
                     <th>Tipo</th>
                     <th>Propietario</th>
                     <th>Ingreso</th>
+                    <th>Observaciones</th>
                     <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
@@ -24,6 +25,7 @@
                         <td>{{$vehiculo->tipo}}</td>
                         <td>{{$vehiculo->propietario ?? '-'}}</td>
                         <td>{{$vehiculo->created_at->format('d/m/Y H:i')}}</td>
+                        <td>{{$vehiculo->observaciones}}</td>
                         <td>{{$vehiculo->estado}}</td>
                         <td>
                             <a href="{{route('vehiculos.edit', $vehiculo)}}" class="btn btn-sm btn-warning">Editar</a>
